@@ -9,11 +9,6 @@
  * @copyright  2002-2016, Cherry Team
  */
 
-// If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
-	die();
-}
-
 // If class `Blank_Plugin_Admin` doesn't exists yet.
 if ( ! class_exists( 'Blank_Plugin_Admin' ) ) {
 
@@ -26,7 +21,7 @@ if ( ! class_exists( 'Blank_Plugin_Admin' ) ) {
 		 * A reference to an instance of this class.
 		 *
 		 * @since 1.0.0
-		 * @var   object
+		 * @var object
 		 */
 		private static $instance = null;
 
@@ -45,10 +40,10 @@ if ( ! class_exists( 'Blank_Plugin_Admin' ) ) {
 			// Load the admin menu.
 			add_action( 'admin_menu', array( $this, 'menu' ) );
 
-			// Load admin style sheet.
+			// Load admin stylesheets.
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 
-			// Load admin JavaScript.
+			// Load admin JavaScripts.
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		}
 
@@ -71,13 +66,14 @@ if ( ! class_exists( 'Blank_Plugin_Admin' ) ) {
 		public function menu() {}
 
 		/**
-		 * Register and enqueue admin style sheet.
+		 * Enqueue admin stylesheets.
 		 *
-		 * @since 1.0.0
+		 * @since  1.0.0
 		 * @access public
+		 * @param  string $hook The current admin page.
 		 * @return void
 		 */
-		public function enqueue_styles() {
+		public function enqueue_styles( $hook ) {
 			wp_enqueue_style(
 				'blank-plugin-admin',
 				esc_url( BLANK_PLUGIN_DIR . 'assets/admin/sass/min/blank-plugin-admin.min.css' ),
@@ -88,14 +84,15 @@ if ( ! class_exists( 'Blank_Plugin_Admin' ) ) {
 		}
 
 		/**
-		 * Register and enqueue admin style sheet.
+		 * Enqueue admin JavaScripts.
 		 *
-		 * @since 1.0.0
+		 * @since  1.0.0
 		 * @access public
+		 * @param  string $hook The current admin page.
 		 * @return void
 		 */
-		public function enqueue_scripts() {
-			wp_register_script(
+		public function enqueue_scripts( $hook ) {
+			wp_enqueue_script(
 				'blank-plugin-admin',
 				esc_url( BLANK_PLUGIN_DIR . 'assets/admin/js/min/blank-plugin-admin.min.js' ),
 				array( 'cherry-js-core' ),
