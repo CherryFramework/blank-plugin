@@ -66,7 +66,7 @@ if ( ! class_exists( 'Blank_Plugin' ) ) {
 			add_action( 'after_setup_theme', array( $this, 'get_core' ), 1 );
 
 			// Initialization of modules.
-			add_action( 'after_setup_theme', array( $this, 'init' ) );
+			add_action( 'after_setup_theme', array( 'Cherry_Core', 'load_all_modules' ), 2 );
 
 			// Internationalize the text strings used.
 			add_action( 'plugins_loaded', array( $this, 'lang' ), 2 );
@@ -147,6 +147,8 @@ if ( ! class_exists( 'Blank_Plugin' ) ) {
 			}
 
 			$this->core = new Cherry_Core( array(
+				'base_dir' => BLANK_PLUGIN_DIR . 'cherry-framework',
+				'base_url' => BLANK_PLUGIN_URI . 'cherry-framework',
 				'modules'  => array(
 					'cherry-toolkit' => array(
 						'autoload' => false,
@@ -184,7 +186,9 @@ if ( ! class_exists( 'Blank_Plugin' ) ) {
 		 * @return void
 		 */
 		public function admin_init() {
-			require_once( BLANK_PLUGIN_DIR . 'includes/admin/class-plugin-admin.php' );
+			if ( is_admin() ) {
+				require_once( BLANK_PLUGIN_DIR . 'includes/admin/class-plugin-admin.php' );
+			}
 		}
 
 		/**
