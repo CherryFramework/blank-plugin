@@ -11,4 +11,4 @@ Harvesting for creating WordPress plugins using modular Cherry Framework v.5+*__
 * [@Shin](https://github.com/shinTM) - **Developer**
 
 ## Help
-Found a bug? Feature requests? [Create an issue - Thanks!](https://github.com/CherryFramework/cherry-projects/issues)
+Found a bug? Feature requests? [Create an issue - Thanks!](https://github.com/CherryFramework/blank-plugin/issues/new)
