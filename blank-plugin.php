@@ -62,22 +62,22 @@ if ( ! class_exists( 'Blank_Plugin' ) ) {
 			// Load the installer core.
 			add_action( 'after_setup_theme', require( trailingslashit( __DIR__ ) . 'cherry-framework/setup.php' ), 0 );
 
-			// Load the core functions/classes required by the rest of the theme.
+			// Load the core functions/classes required by the rest of the plugin.
 			add_action( 'after_setup_theme', array( $this, 'get_core' ), 1 );
 
-			// Initialization of modules.
+			// Laad the modules.
 			add_action( 'after_setup_theme', array( 'Cherry_Core', 'load_all_modules' ), 2 );
 
 			// Internationalize the text strings used.
-			add_action( 'plugins_loaded', array( $this, 'lang' ), 2 );
+			add_action( 'plugins_loaded', array( $this, 'lang' ), 1 );
 
 			// Load the admin files.
-			add_action( 'plugins_loaded', array( $this, 'admin_init' ), 3 );
+			add_action( 'plugins_loaded', array( $this, 'admin' ), 2 );
 
-			// Load public-facing style sheet.
+			// Load public-facing stylesheets.
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 
-			// Load public-facing JavaScript.
+			// Load public-facing JavaScripts.
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 
 			// Register activation and deactivation hook.
@@ -118,7 +118,7 @@ if ( ! class_exists( 'Blank_Plugin' ) ) {
 
 		/**
 		 * Loads the core functions. These files are needed before loading anything else in the
-		 * theme because they have required functions for use.
+		 * plugin because they have required functions for use.
 		 *
 		 * @since  1.0.0
 		 * @access public
@@ -127,7 +127,7 @@ if ( ! class_exists( 'Blank_Plugin' ) ) {
 		public function get_core() {
 
 			/**
-			 * Fires before loads the core theme functions.
+			 * Fires before loads the plugin's core.
 			 *
 			 * @since 1.0.0
 			 */
@@ -175,8 +175,7 @@ if ( ! class_exists( 'Blank_Plugin' ) ) {
 		 * @access public
 		 * @return void
 		 */
-		public function init() {
-		}
+		public function init() {}
 
 		/**
 		 * Loads admin files.
@@ -185,7 +184,8 @@ if ( ! class_exists( 'Blank_Plugin' ) ) {
 		 * @access public
 		 * @return void
 		 */
-		public function admin_init() {
+		public function admin() {
+
 			if ( is_admin() ) {
 				require_once( BLANK_PLUGIN_DIR . 'includes/admin/class-plugin-admin.php' );
 			}
@@ -203,7 +203,7 @@ if ( ! class_exists( 'Blank_Plugin' ) ) {
 		}
 
 		/**
-		 * Register and enqueue public-facing style sheet.
+		 * Enqueue public-facing stylesheets.
 		 *
 		 * @since 1.0.0
 		 * @access public
@@ -220,7 +220,7 @@ if ( ! class_exists( 'Blank_Plugin' ) ) {
 		}
 
 		/**
-		 * Register and enqueue public-facing style sheet.
+		 * Enqueue public-facing JavaScripts.
 		 *
 		 * @since 1.0.0
 		 * @access public
