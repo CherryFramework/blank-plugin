@@ -85,7 +85,7 @@ if ( ! class_exists( 'Blank_Plugin_Admin' ) ) {
 				esc_html__( 'Options Example', 'blank-plugin' ),
 				'edit_theme_options',
 				'blank-plugin-options-page',
-				array('Blank_Plugin_Options_Page', 'get_instance' )
+				array( 'Blank_Plugin_Options_Page', 'get_instance' )
 			);
 		}
 

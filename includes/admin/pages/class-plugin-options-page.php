@@ -50,7 +50,7 @@ if ( ! class_exists( 'Blank_Plugin_Options_Page' ) ) {
 		 *
 		 * @since 1.0.0
 		 * @access public
-		 * @return html
+		 * @return void
 		 */
 		public function render_page() {
 			$this->builder->register_section(
@@ -90,7 +90,7 @@ if ( ! class_exists( 'Blank_Plugin_Options_Page' ) ) {
 						'description'	=> esc_html__( 'Description checkbox.', 'blank-plugin' ),
 						'class'			=> '',
 						'value'			=> array(
-							'checkbox' => 'true'
+							'checkbox' => 'true',
 						),
 						'options'		=> array(
 							'checkbox' => esc_html__( 'Check Me', 'blank-plugin' ),

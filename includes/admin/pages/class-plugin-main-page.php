@@ -50,7 +50,7 @@ if ( ! class_exists( 'Blank_Plugin_Main_Page' ) ) {
 		 *
 		 * @since 1.0.0
 		 * @access public
-		 * @return html
+		 * @return void
 		 */
 		public function render_page() {
 			$this->builder->register_section(
@@ -65,8 +65,8 @@ if ( ! class_exists( 'Blank_Plugin_Main_Page' ) ) {
 			$this->builder->register_html(
 				array(
 					'html' => array(
-						'parent'=> 'main_page',
-						'html'	=> '<div id="main-page-content">' . esc_html__( 'The blank plugin with Cherry Frameworka. On the basis of the workpiece can be created quickly and easily any plugins for WordPress.', 'blank-plugin' ) . '</div>',
+						'parent' => 'main_page',
+						'html'   => '<div id="main-page-content">' . esc_html__( 'The blank plugin with Cherry Frameworka. On the basis of the workpiece can be created quickly and easily any plugins for WordPress.', 'blank-plugin' ) . '</div>',
 					),
 				)
 			);

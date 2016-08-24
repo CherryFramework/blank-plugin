@@ -216,10 +216,10 @@ if ( ! class_exists( 'Blank_Plugin' ) ) {
 		 * @since 1.0.0
 		 */
 		public function register_assets() {
-			//Register stylesheets.
+			// Register stylesheets.
 			wp_register_style( 'blank-plugin', esc_url( BLANK_PLUGIN_URI . 'assets/css/min/blank-plugin.min.css' ), array(), BLANK_PLUGIN_VERSION, 'all' );
 
-			//Register JavaScripts.
+			// Register JavaScripts.
 			wp_register_script( 'blank-plugin',esc_url( BLANK_PLUGIN_URI . 'assets/js/min/blank-plugin.min.js' ), array( 'jquery ', 'cherry-js-core' ), BLANK_PLUGIN_VERSION, true );
 		}
 
