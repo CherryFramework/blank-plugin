@@ -68,17 +68,23 @@ if ( ! class_exists( 'Blank_Plugin' ) ) {
 			// Laad the modules.
 			add_action( 'after_setup_theme', array( 'Cherry_Core', 'load_all_modules' ), 2 );
 
+			// Initialization of modules.
+			add_action( 'after_setup_theme', array( $this, 'init_modules' ), 3 );
+
 			// Internationalize the text strings used.
 			add_action( 'plugins_loaded', array( $this, 'lang' ), 1 );
 
 			// Load the admin files.
 			add_action( 'plugins_loaded', array( $this, 'admin' ), 2 );
 
-			// Load public-facing stylesheets.
-			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
+			// Register public assets.
+			add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 10 );
+
+			// Load public-facing StyleSheets.
+			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ), 11 );
 
 			// Load public-facing JavaScripts.
-			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 12 );
 
 			// Register activation and deactivation hook.
 			register_activation_hook( __FILE__, array( $this, 'activation' ) );
@@ -150,17 +156,17 @@ if ( ! class_exists( 'Blank_Plugin' ) ) {
 				'base_dir' => BLANK_PLUGIN_DIR . 'cherry-framework',
 				'base_url' => BLANK_PLUGIN_URI . 'cherry-framework',
 				'modules'  => array(
-					'cherry-toolkit' => array(
-						'autoload' => false,
-					),
 					'cherry-js-core' => array(
 						'autoload' => true,
+					),
+					'cherry-toolkit' => array(
+						'autoload' => false,
 					),
 					'cherry-ui-elements' => array(
 						'autoload' => false,
 					),
-					'cherry-utility' => array(
-						'autoload' => true,
+					'cherry-interface-builder' => array(
+						'autoload' => false,
 					),
 				),
 			) );
@@ -175,7 +181,9 @@ if ( ! class_exists( 'Blank_Plugin' ) ) {
 		 * @access public
 		 * @return void
 		 */
-		public function init() {}
+		public function init_modules() {
+			$this->get_core()->init_module( 'cherry-interface-builder', array() );
+		}
 
 		/**
 		 * Loads admin files.
@@ -203,6 +211,19 @@ if ( ! class_exists( 'Blank_Plugin' ) ) {
 		}
 
 		/**
+		 * Register assets.
+		 *
+		 * @since 1.0.0
+		 */
+		public function register_assets() {
+			//Register stylesheets.
+			wp_register_style( 'blank-plugin', esc_url( BLANK_PLUGIN_URI . 'assets/css/min/blank-plugin.min.css' ), array(), BLANK_PLUGIN_VERSION, 'all' );
+
+			//Register JavaScripts.
+			wp_register_script( 'blank-plugin',esc_url( BLANK_PLUGIN_URI . 'assets/js/min/blank-plugin.min.js' ), array( 'jquery ', 'cherry-js-core' ), BLANK_PLUGIN_VERSION, true );
+		}
+
+		/**
 		 * Enqueue public-facing stylesheets.
 		 *
 		 * @since 1.0.0
@@ -210,13 +231,7 @@ if ( ! class_exists( 'Blank_Plugin' ) ) {
 		 * @return void
 		 */
 		public function enqueue_styles() {
-			wp_enqueue_style(
-				'blank-plugin',
-				esc_url( BLANK_PLUGIN_DIR . 'assets/sass/min/blank-plugin.min.css' ),
-				array(),
-				BLANK_PLUGIN_VERSION,
-				'all'
-			);
+			wp_enqueue_style( 'blank-plugin' );
 		}
 
 		/**
@@ -227,13 +242,7 @@ if ( ! class_exists( 'Blank_Plugin' ) ) {
 		 * @return void
 		 */
 		public function enqueue_scripts() {
-			wp_register_script(
-				'blank-plugin',
-				esc_url( BLANK_PLUGIN_DIR . 'assets/js/min/blank-plugin.min.js' ),
-				array( 'cherry-js-core' ),
-				BLANK_PLUGIN_VERSION,
-				true
-			);
+			wp_enqueue_script( 'blank-plugin' );
 		}
 
 		/**

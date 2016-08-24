@@ -1,5 +1,5 @@
 # blank-plugin
-Harvesting for creating WordPress plugins using modular Cherry Framework v.5+*__.
+Harvesting for creating WordPress plugins using modular Cherry Framework v.5+.
 
 ## Authors
 

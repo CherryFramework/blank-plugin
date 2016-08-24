@@ -54,7 +54,12 @@ if ( ! class_exists( 'Blank_Plugin_Admin' ) ) {
 		 * @access public
 		 * @return void
 		 */
-		public function includes() {}
+		public function includes() {
+
+			// Include plugin pages.
+			require_once( trailingslashit( BLANK_PLUGIN_DIR ) . 'includes/admin/pages/class-plugin-main-page.php' );
+			require_once( trailingslashit( BLANK_PLUGIN_DIR ) . 'includes/admin/pages/class-plugin-options-page.php' );
+		}
 
 		/**
 		 * Register the admin menu.
@@ -63,7 +68,26 @@ if ( ! class_exists( 'Blank_Plugin_Admin' ) ) {
 		 * @access public
 		 * @return void
 		 */
-		public function menu() {}
+		public function menu() {
+			add_menu_page(
+				esc_html__( 'Blank Plugin', 'blank-plugin' ),
+				esc_html__( 'Blank Plugin', 'blank-plugin' ),
+				'edit_theme_options',
+				'blank-plugin',
+				array( 'Blank_Plugin_Main_Page', 'get_instance' ),
+				'',
+				58
+			);
+
+			add_submenu_page(
+				'blank-plugin',
+				esc_html__( 'Options Example', 'blank-plugin' ),
+				esc_html__( 'Options Example', 'blank-plugin' ),
+				'edit_theme_options',
+				'blank-plugin-options-page',
+				array('Blank_Plugin_Options_Page', 'get_instance' )
+			);
+		}
 
 		/**
 		 * Enqueue admin stylesheets.
@@ -74,13 +98,7 @@ if ( ! class_exists( 'Blank_Plugin_Admin' ) ) {
 		 * @return void
 		 */
 		public function enqueue_styles( $hook ) {
-			wp_enqueue_style(
-				'blank-plugin-admin',
-				esc_url( BLANK_PLUGIN_DIR . 'assets/admin/sass/min/blank-plugin-admin.min.css' ),
-				array(),
-				BLANK_PLUGIN_VERSION,
-				'all'
-			);
+			wp_enqueue_style( 'blank-plugin-admin', esc_url( BLANK_PLUGIN_URI . 'assets/admin/css/min/blank-plugin-admin.min.css' ), array(), BLANK_PLUGIN_VERSION, 'all' );
 		}
 
 		/**
@@ -94,7 +112,7 @@ if ( ! class_exists( 'Blank_Plugin_Admin' ) ) {
 		public function enqueue_scripts( $hook ) {
 			wp_enqueue_script(
 				'blank-plugin-admin',
-				esc_url( BLANK_PLUGIN_DIR . 'assets/admin/js/min/blank-plugin-admin.min.js' ),
+				esc_url( BLANK_PLUGIN_URI . 'assets/admin/js/min/blank-plugin-admin.min.js' ),
 				array( 'cherry-js-core' ),
 				BLANK_PLUGIN_VERSION,
 				true
