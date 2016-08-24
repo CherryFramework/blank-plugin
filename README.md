@@ -1,6 +1,9 @@
 # blank-plugin
 Harvesting for creating WordPress plugins using modular Cherry Framework v.5+.
 
+## Travis-ci status
+<img src="https://travis-ci.org/CherryFramework/blank-plugin.svg?branch=master" alt="Build Status" />
+
 ## Authors
 
 * [@Cheh](https://github.com/cheh) - **Developer**
