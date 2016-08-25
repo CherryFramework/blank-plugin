@@ -73,6 +73,9 @@ before_script:
     - npm install -g jshint
     - wget https://develop.svn.wordpress.org/trunk/.jshintrc
 
+    - git clone git@github.com:atoum/atoum.git $WP_DEVELOP_DIR
+
+
 # Run test script commands.
 # Default is specific to project language.
 # All commands must exit with code 0 on success. Anything else is considered failure.
@@ -93,4 +96,5 @@ script:
     # --standard: Use WordPress as the standard.
     # --extensions: Only sniff PHP files.
     - $WP_DEVELOP_DIR/php-codesniffer/scripts/phpcs -p -s -v -n . --standard=./codesniffer.ruleset.xml --extensions=php
-    - bin/atoum --test-all
+
+    - $WP_DEVELOP_DIR/atoum/bin/atoum --test-all
