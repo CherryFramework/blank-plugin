@@ -72,8 +72,7 @@ before_script:
     # @link http://jshint.com/docs/
     - npm install -g jshint
     - wget https://develop.svn.wordpress.org/trunk/.jshintrc
-
-    - git clone https://github.com/atoum/atoum.git $WP_DEVELOP_DIR
+    - git clone https://github.com/atoum/atoum.git $WP_DEVELOP_DIR/atoum
 
 
 # Run test script commands.
