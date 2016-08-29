@@ -347,7 +347,7 @@ if ( ! class_exists( 'Blank_Plugin_Options_Page' ) ) {
 				)
 			);
 
-			$this->builder->register_control(
+			$this->builder->register_component(
 				array(
 					'accordion' => array(
 						'type'				=> 'component-accordion',

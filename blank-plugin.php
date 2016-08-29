@@ -182,7 +182,9 @@ if ( ! class_exists( 'Blank_Plugin' ) ) {
 		 * @return void
 		 */
 		public function init_modules() {
-			$this->get_core()->init_module( 'cherry-interface-builder', array() );
+			if ( is_admin() ) {
+				$this->get_core()->init_module( 'cherry-interface-builder', array() );
+			}
 		}
 
 		/**
@@ -193,7 +195,6 @@ if ( ! class_exists( 'Blank_Plugin' ) ) {
 		 * @return void
 		 */
 		public function admin() {
-
 			if ( is_admin() ) {
 				require_once( BLANK_PLUGIN_DIR . 'includes/admin/class-plugin-admin.php' );
 			}
@@ -220,7 +221,7 @@ if ( ! class_exists( 'Blank_Plugin' ) ) {
 			wp_register_style( 'blank-plugin', esc_url( BLANK_PLUGIN_URI . 'assets/css/min/blank-plugin.min.css' ), array(), BLANK_PLUGIN_VERSION, 'all' );
 
 			// Register JavaScripts.
-			wp_register_script( 'blank-plugin',esc_url( BLANK_PLUGIN_URI . 'assets/js/min/blank-plugin.min.js' ), array( 'jquery ', 'cherry-js-core' ), BLANK_PLUGIN_VERSION, true );
+			wp_register_script( 'blank-plugin',esc_url( BLANK_PLUGIN_URI . 'assets/js/min/blank-plugin.min.js' ), array( 'cherry-js-core' ), BLANK_PLUGIN_VERSION, true );
 		}
 
 		/**
