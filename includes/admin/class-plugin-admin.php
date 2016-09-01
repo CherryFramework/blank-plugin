@@ -129,12 +129,11 @@ if ( ! class_exists( 'Blank_Plugin_Admin' ) ) {
 		}
 
 		/**
-		 * Enqueue admin JavaScripts.
+		 * Check current plugin page.
 		 *
 		 * @since  1.0.0
 		 * @access public
-		 * @param  string $hook The current admin page.
-		 * @return void
+		 * @return bool
 		 */
 		public static function is_plugin_page() {
 			$screen = get_current_screen();

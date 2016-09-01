@@ -78,7 +78,7 @@ before_script:
 # All commands must exit with code 0 on success. Anything else is considered failure.
 script:
     # Search theme for PHP syntax errors.
-    - find . \( -name '*.php' \) -exec php -lf {} \;
+    - find . \( -name '*.php' \) \( -path ./cherry-framework -prune -o -print \) -exec php -lf {} \;
     # Run the theme through JSHint
     - jshint .
     # Run the theme through JavaScript Code Style checker
