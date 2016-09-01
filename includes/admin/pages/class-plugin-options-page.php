@@ -64,17 +64,27 @@ if ( ! class_exists( 'Blank_Plugin_Options_Page' ) ) {
 				)
 			);
 
+			$this->builder->register_form(
+				array(
+					'option_form' => array(
+						'type'				=> 'form',
+						'parent'			=> 'option_section',
+						'action'			=> 'my_action.php',
+					),
+				)
+			);
+
 			$this->builder->register_settings(
 				array(
 					'ui_elements' => array(
 						'type'				=> 'settings',
-						'parent'			=> 'option_section',
+						'parent'			=> 'option_form',
 						'title'				=> __( '<span class="dashicons dashicons-admin-generic"></span> UI Elements', 'blank-plugin' ),
 						'description'		=> esc_html__( 'UI element created with the module cherry-ui-elements.', 'blank-plugin' ),
 					),
 					'bi_elements' => array(
 						'type'				=> 'settings',
-						'parent'			=> 'option_section',
+						'parent'			=> 'option_form',
 						'title'				=> __( '<span class="dashicons dashicons-admin-generic"></span> Interface Builder Element', 'blank-plugin' ),
 						'description'		=> esc_html__( 'Interface element created with the module cherry-interface-builder.', 'blank-plugin' ),
 					),
@@ -343,6 +353,17 @@ if ( ! class_exists( 'Blank_Plugin_Options_Page' ) ) {
 						'cols'					=> '20',
 						'class'					=> '',
 						'label'					=> '',
+					),
+				)
+			);
+
+			$this->builder->register_html(
+				array(
+					'form_html' => array(
+						'type'				=> 'html',
+						'parent'			=> 'ui_elements',
+						'class'				=> 'cherry-control form-button',
+						'html'				=> '<div id="cherry-projects-save-options" class="custom-button save-button"><span>' . esc_html__( 'Save', 'blank-plugin' ) . '</span></div><div id="cherry-projects-restore-options" class="custom-button restore-button"><span>' . esc_html__( 'Restore', 'blank-plugin' ) . '</span></div>',
 					),
 				)
 			);

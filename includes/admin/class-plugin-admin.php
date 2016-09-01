@@ -98,7 +98,14 @@ if ( ! class_exists( 'Blank_Plugin_Admin' ) ) {
 		 * @return void
 		 */
 		public function enqueue_styles( $hook ) {
-			wp_enqueue_style( 'blank-plugin-admin', esc_url( BLANK_PLUGIN_URI . 'assets/admin/css/min/blank-plugin-admin.min.css' ), array(), BLANK_PLUGIN_VERSION, 'all' );
+			if ( Blank_Plugin_Admin::is_plugin_page() ) {
+				wp_enqueue_style(
+					'blank-plugin-admin',
+					esc_url( BLANK_PLUGIN_URI . 'assets/admin/css/min/blank-plugin-admin.min.css' ),
+					array(), BLANK_PLUGIN_VERSION,
+					'all'
+				);
+			}
 		}
 
 		/**
@@ -110,13 +117,29 @@ if ( ! class_exists( 'Blank_Plugin_Admin' ) ) {
 		 * @return void
 		 */
 		public function enqueue_scripts( $hook ) {
-			wp_enqueue_script(
-				'blank-plugin-admin',
-				esc_url( BLANK_PLUGIN_URI . 'assets/admin/js/min/blank-plugin-admin.min.js' ),
-				array( 'cherry-js-core' ),
-				BLANK_PLUGIN_VERSION,
-				true
-			);
+			if ( Blank_Plugin_Admin::is_plugin_page() ) {
+				wp_enqueue_script(
+					'blank-plugin-admin',
+					esc_url( BLANK_PLUGIN_URI . 'assets/admin/js/min/blank-plugin-admin.min.js' ),
+					array( 'cherry-js-core' ),
+					BLANK_PLUGIN_VERSION,
+					true
+				);
+			}
+		}
+
+		/**
+		 * Enqueue admin JavaScripts.
+		 *
+		 * @since  1.0.0
+		 * @access public
+		 * @param  string $hook The current admin page.
+		 * @return void
+		 */
+		public static function is_plugin_page() {
+			$screen = get_current_screen();
+
+			return ( ! empty( $screen->base ) && false !== strpos( $screen->base, BLANK_PLUGIN_SLUG ) ) ? true : false ;
 		}
 
 		/**

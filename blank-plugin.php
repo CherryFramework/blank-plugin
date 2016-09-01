@@ -108,6 +108,13 @@ if ( ! class_exists( 'Blank_Plugin' ) ) {
 			define( 'BLANK_PLUGIN_VERSION', '1.0.0' );
 
 			/**
+			 * Set the slug of the plugin.
+			 *
+			 * @since 1.0.0
+			 */
+			define( 'BLANK_PLUGIN_SLUG', basename( dirname( __FILE__ ) ) );
+
+			/**
 			 * Set constant path to the plugin directory.
 			 *
 			 * @since 1.0.0
