@@ -14,7 +14,7 @@
  * @author  Cherry Team
  * @version 1.0.0
  * @license GPL-3.0+
- * @copyright  2002-2016, Cherry Team
+ * @copyright  2012-2016, Cherry Team
  */
 
 // If this file is called directly, abort.
