@@ -59,6 +59,9 @@ if ( ! class_exists( 'Blank_Plugin' ) ) {
 			// Set the constants needed by the plugin.
 			$this->constants();
 
+			// Internationalize the text strings used.
+			add_action( 'plugins_loaded', array( $this, 'lang' ), 1 );
+
 			// Load the installer core.
 			add_action( 'after_setup_theme', require( trailingslashit( __DIR__ ) . 'cherry-framework/setup.php' ), 0 );
 
@@ -71,11 +74,8 @@ if ( ! class_exists( 'Blank_Plugin' ) ) {
 			// Initialization of modules.
 			add_action( 'after_setup_theme', array( $this, 'init_modules' ), 3 );
 
-			// Internationalize the text strings used.
-			add_action( 'plugins_loaded', array( $this, 'lang' ), 1 );
-
-			// Load the admin files.
-			add_action( 'plugins_loaded', array( $this, 'admin' ), 2 );
+			// Load the include files.
+			add_action( 'after_setup_theme', array( $this, 'includes' ), 4 );
 
 			// Register public assets.
 			add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 10 );
@@ -127,6 +127,17 @@ if ( ! class_exists( 'Blank_Plugin' ) ) {
 			 * @since 1.0.0
 			 */
 			define( 'BLANK_PLUGIN_URI', trailingslashit( plugin_dir_url( __FILE__ ) ) );
+		}
+
+		/**
+		 * Loads the translation files.
+		 *
+		 * @since 1.0.0
+		 * @access public
+		 * @return void
+		 */
+		public function lang() {
+			load_plugin_textdomain( 'blank-plugin', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 		}
 
 		/**
@@ -201,21 +212,12 @@ if ( ! class_exists( 'Blank_Plugin' ) ) {
 		 * @access public
 		 * @return void
 		 */
-		public function admin() {
+		public function includes() {
 			if ( is_admin() ) {
 				require_once( BLANK_PLUGIN_DIR . 'includes/admin/class-plugin-admin.php' );
+			}else{
+				//include public files
 			}
-		}
-
-		/**
-		 * Loads the translation files.
-		 *
-		 * @since 1.0.0
-		 * @access public
-		 * @return void
-		 */
-		public function lang() {
-			load_plugin_textdomain( 'blank-plugin', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 		}
 
 		/**
