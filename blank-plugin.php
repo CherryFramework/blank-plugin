@@ -215,8 +215,8 @@ if ( ! class_exists( 'Blank_Plugin' ) ) {
 		public function includes() {
 			if ( is_admin() ) {
 				require_once( BLANK_PLUGIN_DIR . 'includes/admin/class-plugin-admin.php' );
-			}else{
-				//include public files
+			} else {
+				// include public files
 			}
 		}
 
