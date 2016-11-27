@@ -5,36 +5,86 @@
 }
 
 //custom html button
-.custom-button{
-	padding: 16px 30px;
-	display: inline-block;
-	background-color: #C5C5C5;
-	font-weight: 900;
-	text-transform: uppercase;
-	color: #fff;
-	box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.2);
-	cursor: pointer;
-	border-radius: 4px;
-	margin-right: 20px;
-	&.save-button{
-		background-color: #48c569;
-			&:hover{
-				background-color: #3ba956;
-			}
-	}
-	&.restore-button{
-		background-color: #495159;
-			&:hover{
-				background-color: #282D31;
-			}
-	}
-	&:last-child{
-		margin-right: 0;
-	}
-	&:hover{
-		background-color: #3ba956;
-	}
-}
-.form-button{
+.submit_buttons{
+	padding: 15px;
+	display: flex;
 	justify-content: flex-end;
+	& button{
+		position: relative;
+
+		margin-left: 10px;
+		.text {
+			transition: opacity .7s ease;
+		}
+		.icon,
+		.loader-wrapper {
+			transition: opacity .5s ease, transform .5s ease;
+			transform: scale(0);
+
+			opacity: 0;
+		}
+		.icon {
+			font-size: 40px;
+
+			position: absolute;
+			top: 50%;
+			left: 50%;
+
+			width: 40px;
+			height: 40px;
+			margin: -20px 0 0 -20px;
+		}
+		.loader-wrapper {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+
+			width: 20px;
+			height: 20px;
+			margin: -13px 0 0 -13px;
+		}
+		.loader {
+			display: block;
+
+			width: 20px;
+			height: 20px;
+
+			animation: spin .7s linear infinite;
+
+			border: 3px solid #FFF;
+			border-top: 3px solid #3498DB;
+			border-radius: 50%;
+		}
+		&[disabled],
+		&.success {
+			cursor: default;
+			pointer-events: none;
+			.text {
+				opacity: 0;
+			}
+		}
+		&[disabled] {
+			.loader-wrapper {
+				transform: scale(1);
+
+				opacity: 1;
+			}
+		}
+		&.success {
+			.icon {
+				transition-delay: .1s;
+				transform: scale(1);
+
+				opacity: 1;
+			}
+		}
+		@keyframes spin {
+			0% {
+				transform: rotate(0deg);
+			}
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+	}
 }

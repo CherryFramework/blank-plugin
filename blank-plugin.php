@@ -186,6 +186,12 @@ if ( ! class_exists( 'Blank_Plugin' ) ) {
 					'cherry-interface-builder' => array(
 						'autoload' => false,
 					),
+					'cherry-handler' => array(
+						'autoload' => false,
+					),
+					'cherry5-insert-shortcode' => array(
+						'autoload' => false,
+					),
 				),
 			) );
 
@@ -201,7 +207,7 @@ if ( ! class_exists( 'Blank_Plugin' ) ) {
 		 */
 		public function init_modules() {
 			if ( is_admin() ) {
-				$this->get_core()->init_module( 'cherry-interface-builder', array() );
+
 			}
 		}
 

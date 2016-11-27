@@ -37,6 +37,11 @@ if ( ! class_exists( 'Blank_Plugin_Admin' ) ) {
 			// Include libraries from the `includes/admin`
 			$this->includes();
 
+			new Blank_Plugin_Register_Shortcodes();
+
+			// Set default options
+			add_action( 'admin_init', array( $this, 'set_default_options' ) );
+
 			// Load the admin menu.
 			add_action( 'admin_menu', array( $this, 'menu' ) );
 
@@ -55,7 +60,9 @@ if ( ! class_exists( 'Blank_Plugin_Admin' ) ) {
 		 * @return void
 		 */
 		public function includes() {
-
+			require_once( trailingslashit( BLANK_PLUGIN_DIR ) . 'includes/admin/class-plugin-options.php' );
+			require_once( trailingslashit( BLANK_PLUGIN_DIR ) . 'includes/admin/class-ajax-handlers.php' );
+			require_once( trailingslashit( BLANK_PLUGIN_DIR ) . 'includes/admin/class-register-shortcodes.php' );
 			// Include plugin pages.
 			require_once( trailingslashit( BLANK_PLUGIN_DIR ) . 'includes/admin/pages/class-plugin-main-page.php' );
 			require_once( trailingslashit( BLANK_PLUGIN_DIR ) . 'includes/admin/pages/class-plugin-options-page.php' );
@@ -89,6 +96,17 @@ if ( ! class_exists( 'Blank_Plugin_Admin' ) ) {
 			);
 		}
 
+		/**
+		 * Write default settings to database.
+		 *
+		 * @since 1.0.0
+		 * @access public
+		 * @return void
+		 */
+		public function set_default_options() {
+			$blank_plugin_options = new Blank_Plugin_Options();
+			$blank_plugin_options -> set_default_options();
+		}
 		/**
 		 * Enqueue admin stylesheets.
 		 *
