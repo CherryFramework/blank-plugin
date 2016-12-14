@@ -24,7 +24,7 @@ if ( ! class_exists( 'Blank_Plugin_Options' ) ) {
 		 * @var array
 		 * @access protected
 		 */
-		protected $section             = null;
+		protected $section = null;
 
 		/**
 		* Form on options page.
@@ -33,7 +33,7 @@ if ( ! class_exists( 'Blank_Plugin_Options' ) ) {
 		* @var array
 		* @access protected
 		*/
-		protected $form                = null;
+		protected $form = null;
 
 		/**
 		* User interface elements.
@@ -42,7 +42,7 @@ if ( ! class_exists( 'Blank_Plugin_Options' ) ) {
 		* @var array
 		* @access protected
 		*/
-		protected $ui_elements         = null;
+		protected $ui_elements = null;
 
 		/**
 		* Interface builder elements.
@@ -51,7 +51,7 @@ if ( ! class_exists( 'Blank_Plugin_Options' ) ) {
 		* @var array
 		* @access protected
 		*/
-		protected $bi_elements         = null;
+		protected $bi_elements = null;
 
 		/**
 		* User interface potions.
@@ -69,7 +69,7 @@ if ( ! class_exists( 'Blank_Plugin_Options' ) ) {
 		* @var array
 		* @access protected
 		*/
-		protected $submit_buttons         = null;
+		protected $submit_buttons = null;
 
 		/**
 		* Buttons.
@@ -78,7 +78,7 @@ if ( ! class_exists( 'Blank_Plugin_Options' ) ) {
 		* @var array
 		* @access protected
 		*/
-		protected $options_button      = null;
+		protected $options_button = null;
 
 		/**
 		* Accordion.
@@ -87,7 +87,7 @@ if ( ! class_exists( 'Blank_Plugin_Options' ) ) {
 		* @var array
 		* @access protected
 		*/
-		protected $accordion      = null;
+		protected $accordion = null;
 
 		/**
 		* Toggle.
@@ -96,7 +96,7 @@ if ( ! class_exists( 'Blank_Plugin_Options' ) ) {
 		* @var array
 		* @access protected
 		*/
-		protected $toggle         = null;
+		protected $toggle = null;
 
 		/**
 		* Vertical tabs.
@@ -105,7 +105,7 @@ if ( ! class_exists( 'Blank_Plugin_Options' ) ) {
 		* @var array
 		* @access protected
 		*/
-		protected $tab_vertical   = null;
+		protected $tab_vertical = null;
 
 		/**
 		* Horizontal tabs.
@@ -123,7 +123,7 @@ if ( ! class_exists( 'Blank_Plugin_Options' ) ) {
 		* @var array
 		* @access protected
 		*/
-		protected $accordion_settings      = null;
+		protected $accordion_settings = null;
 
 		/**
 		* Toggle settings.
@@ -132,7 +132,7 @@ if ( ! class_exists( 'Blank_Plugin_Options' ) ) {
 		* @var array
 		* @access protected
 		*/
-		protected $toggle_settings         = null;
+		protected $toggle_settings = null;
 
 		/**
 		* Vertical tabs settings.
@@ -141,7 +141,7 @@ if ( ! class_exists( 'Blank_Plugin_Options' ) ) {
 		* @var array
 		* @access protected
 		*/
-		protected $tab_vertical_settings   = null;
+		protected $tab_vertical_settings = null;
 
 		/**
 		* Horizontal tabs settings.
@@ -159,7 +159,7 @@ if ( ! class_exists( 'Blank_Plugin_Options' ) ) {
 		* @var array
 		* @access protected
 		*/
-		protected $accordion_options      = null;
+		protected $accordion_options = null;
 
 		/**
 		* Toggle options.
@@ -168,7 +168,7 @@ if ( ! class_exists( 'Blank_Plugin_Options' ) ) {
 		* @var array
 		* @access protected
 		*/
-		protected $toggle_options         = null;
+		protected $toggle_options = null;
 
 		/**
 		* Vertical tabs options.
@@ -177,7 +177,7 @@ if ( ! class_exists( 'Blank_Plugin_Options' ) ) {
 		* @var array
 		* @access protected
 		*/
-		protected $tab_vertical_options   = null;
+		protected $tab_vertical_options = null;
 
 		/**
 		* Horizontal tab options.
@@ -213,16 +213,7 @@ if ( ! class_exists( 'Blank_Plugin_Options' ) ) {
 		 * @var array
 		 * @access private
 		 */
-		private $default_options       = array();
-
-		/**
-		 * Instance of the class Cherry_Utility.
-		 *
-		 * @since 1.0.0
-		 * @var object
-		 * @access private
-		 */
-		private $utility              = null;
+		private $default_options = array();
 
 		/**
 		 * Class constructor.
@@ -232,8 +223,6 @@ if ( ! class_exists( 'Blank_Plugin_Options' ) ) {
 		 * @return void
 		 */
 		public function __construct() {
-			$this->utility = blank_plugin()->get_core()->modules['cherry-utility']->utility;
-
 			$this->set_options();
 		}
 
@@ -351,6 +340,20 @@ if ( ! class_exists( 'Blank_Plugin_Options' ) ) {
 					'upload_button_text' => esc_html__( 'Choose Media', 'blank-plugin' ),
 					'class'              => '',
 					'label'              => '',
+				),
+				'icon_picker' => array(
+					'type'        => 'iconpicker',
+					'parent'      => 'ui_elements',
+					'title'       => esc_html__( 'Icon Picker', 'blank-plugin' ),
+					'description' => esc_html__( 'Description icon picker.', 'blank-plugin' ),
+					'value'       => 'fa-wordpress',
+					'icon_data'   => array(
+						'icon_set'    => 'cherryWidgetFontAwesome',
+						'icon_css'    => esc_url( BLANK_PLUGIN_URI . 'assets/css/min/font-awesome.min.css' ),
+						'icon_base'   => 'fa',
+						'icon_prefix' => 'fa-',
+						'icons'       => $this->get_icons_set(),
+					),
 				),
 				'media_multi_image' => array(
 					'type'               => 'media',
@@ -481,7 +484,7 @@ if ( ! class_exists( 'Blank_Plugin_Options' ) ) {
 					'label'       => '',
 					'class'       => '',
 				),
-				'slider' => array(
+				'draggable-slider' => array(
 					'type'        => 'slider',
 					'parent'      => 'ui_elements',
 					'title'       => esc_html__( 'Slider', 'blank-plugin' ),

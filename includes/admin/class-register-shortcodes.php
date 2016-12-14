@@ -41,61 +41,73 @@ if ( ! class_exists( 'Blank_Plugin_Register_Shortcodes' ) ) {
 		private function register_shortcodes() {
 			cherry5_register_shortcode(
 				array(
-					'title'       => 'UI Elements',
-					'description' => '',
-					'icon'        => '<span class="dashicons dashicons-admin-customizer"></span>',
-					'slug'        => 'ui_elements',
+
+					'title'       => esc_html__( 'Plugin name', 'blank-plugin' ),
+					'description' => esc_html__( 'Plugin description', 'blank-plugin' ),
+					'icon'        => '<span class="dashicons dashicons-admin-settings"></span>',
+					'slug'        => 'new-plugin',
 					'shortcodes'  => array(
 						array(
-							'title'       => 'UI Elements Shortcode',
-							'description' => '',
-							'icon'        => '',
-							'slug'        => 'ui_elements_shortcode',
-							'twin'        => false,
+							'title'       => esc_html__( 'Shortcode Title', 'blank-plugin' ),
+							'description' => esc_html__( 'Shortcode Description.', 'blank-plugin' ),
+							'icon'        => '<span class="dashicons dashicons-schedule"></span>',
+							'slug'        => 'new-shortcode',
 							'options'     => $this->ui_elements_options,
 						),
+						array(
+							'title'       => esc_html__( 'Twin Shortcode', 'blank-plugin' ),
+							'icon'        => '<span class="dashicons dashicons-media-code"></span>',
+							'slug'        => 'twin-shortcode',
+							'twin'        => true,
+						),
+						array(
+							'title'       => esc_html__( 'Has Not Option', 'blank-plugin' ),
+							'icon'        => '<span class="dashicons dashicons-media-default"></span>',
+							'slug'        => 'has-not-option',
+						),
+						array(
+							'title'           => esc_html__( 'Has Default Content', 'blank-plugin' ),
+							'icon'            => '<span class="dashicons dashicons-media-document"></span>',
+							'slug'            => 'default-content',
+							'default_content' => 'new-shortcode',
+							'twin'            => true,
+							'options'         => $this->ui_elements_options,
+							),
 					),
 				)
 			);
 
 			cherry5_register_shortcode(
 				array(
-					'title'       => 'Interface Builder Elements',
-					'description' => '',
+					'title'       => esc_html__( 'Interface Builder Elements', 'blank-plugin' ),
 					'icon'        => '<span class="dashicons dashicons-hammer"></span>',
 					'slug'        => 'interface_builder',
 					'shortcodes'  => array(
 						array(
-							'title'       => 'UI Elements Shortcode',
-							'description' => '',
-							'icon'        => '',
-							'slug'        => 'Shortcode With Accordion',
-							'twin'        => false,
+							'title'       => esc_html__( 'Shortcode With Accordion', 'blank-plugin' ),
+							'icon'        => '<span class="dashicons dashicons-list-view"></span>',
+							'slug'        => 'accordion',
 							'options'     => array_merge( $this->accordion, $this->accordion_settings, $this->accordion_options ),
 						),
 						array(
-							'title'       => 'toggle Shortcode',
-							'description' => '',
+							'title'       => esc_html__( 'Shortcode With Toggle', 'blank-plugin' ),
 							'icon'        => '<span class="dashicons dashicons-editor-justify"></span>',
-							'slug'        => 'Shortcode With Toggle',
-							'twin'        => false,
+							'slug'        => 'toggle',
 							'options'     => array_merge( $this->toggle, $this->toggle_settings, $this->toggle_options ),
 						),
 						array(
-							'title'       => 'Shortcode With Vertical Tabs',
-							'description' => '',
-							'icon'        => '',
+							'title'       => esc_html__( 'Shortcode With Vertical Tabs', 'blank-plugin' ),
+							'icon'        => '<span class="dashicons dashicons-category"></span>',
 							'slug'        => 'tab_vertical_shortcode',
-							'twin'        => false,
 							'options'     => array_merge( $this->tab_vertical, $this->tab_vertical_settings, $this->tab_vertical_options ),
 						),
 						array(
-							'title'       => 'Shortcode With horizontal Tabs',
-							'description' => '',
-							'icon'        => '',
-							'slug'        => 'tab_horizontal_shortcode',
-							'twin'        => false,
-							'options'     => array_merge( $this->tab_horizontal, $this->tab_horizontal_settings, $this->tab_horizontal_options ),
+							'title'           => esc_html__( 'Shortcode With Horizontal Tabs', 'blank-plugin' ),
+							'icon'            => '<span class="dashicons dashicons-portfolio"></span>',
+							'slug'            => 'tab_horizontal_shortcode',
+							'default_content' => 'new-shortcode',
+							'twin'            => true,
+							'options'         => array_merge( $this->tab_horizontal, $this->tab_horizontal_settings, $this->tab_horizontal_options ),
 						),
 					),
 				)
