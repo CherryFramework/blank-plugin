@@ -39,6 +39,7 @@ if ( ! class_exists( 'Blank_Plugin_Register_Shortcodes' ) ) {
 		 * @return void
 		 */
 		private function register_shortcodes() {
+
 			cherry5_register_shortcode(
 				array(
 
@@ -112,7 +113,6 @@ if ( ! class_exists( 'Blank_Plugin_Register_Shortcodes' ) ) {
 					),
 				)
 			);
-
 
 		}
 	}

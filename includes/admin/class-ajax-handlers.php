@@ -100,7 +100,6 @@ if ( ! class_exists( 'Blank_Plugin_Ajax_Handlers' ) ) {
 		 * @return string
 		 */
 		public function ajax_reset_options() {
-			var_dump('expression');
 			return $this->reset_options();
 		}
 
@@ -124,7 +123,7 @@ if ( ! class_exists( 'Blank_Plugin_Ajax_Handlers' ) ) {
 
 }
 
-if ( ! function_exists( 'Blank_Plugin_Ajax_Handlers' ) ) {
+if ( ! function_exists( 'blank_plugin_ajax_handlers' ) ) {
 
 	/**
 	 * Returns instanse of the plugin class.
@@ -132,9 +131,9 @@ if ( ! function_exists( 'Blank_Plugin_Ajax_Handlers' ) ) {
 	 * @since  1.0.0
 	 * @return object
 	 */
-	function Blank_Plugin_Ajax_Handlers() {
+	function blank_plugin_ajax_handlers() {
 		return Blank_Plugin_Ajax_Handlers::get_instance();
 	}
 
-	Blank_Plugin_Ajax_Handlers();
+	blank_plugin_ajax_handlers();
 }

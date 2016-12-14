@@ -27,165 +27,165 @@ if ( ! class_exists( 'Blank_Plugin_Options' ) ) {
 		protected $section = null;
 
 		/**
-		* Form on options page.
-		*
-		* @since 1.0.0
-		* @var array
-		* @access protected
-		*/
+		 * Form on options page.
+		 *
+		 * @since 1.0.0
+		 * @var array
+		 * @access protected
+		 */
 		protected $form = null;
 
 		/**
-		* User interface elements.
-		*
-		* @since 1.0.0
-		* @var array
-		* @access protected
-		*/
+		 * User interface elements.
+		 *
+		 * @since 1.0.0
+		 * @var array
+		 * @access protected
+		 */
 		protected $ui_elements = null;
 
 		/**
-		* Interface builder elements.
-		*
-		* @since 1.0.0
-		* @var array
-		* @access protected
-		*/
+		 * Interface builder elements.
+		 *
+		 * @since 1.0.0
+		 * @var array
+		 * @access protected
+		 */
 		protected $bi_elements = null;
 
 		/**
-		* User interface potions.
-		*
-		* @since 1.0.0
-		* @var array
-		* @access protected
-		*/
+		 * User interface potions.
+		 *
+		 * @since 1.0.0
+		 * @var array
+		 * @access protected
+		 */
 		protected $ui_elements_options = null;
 
 		/**
-		* Submit buttons.
-		*
-		* @since 1.0.0
-		* @var array
-		* @access protected
-		*/
+		 * Submit buttons.
+		 *
+		 * @since 1.0.0
+		 * @var array
+		 * @access protected
+		 */
 		protected $submit_buttons = null;
 
 		/**
-		* Buttons.
-		*
-		* @since 1.0.0
-		* @var array
-		* @access protected
-		*/
+		 * Buttons.
+		 *
+		 * @since 1.0.0
+		 * @var array
+		 * @access protected
+		 */
 		protected $options_button = null;
 
 		/**
-		* Accordion.
-		*
-		* @since 1.0.0
-		* @var array
-		* @access protected
-		*/
+		 * Accordion.
+		 *
+		 * @since 1.0.0
+		 * @var array
+		 * @access protected
+		 */
 		protected $accordion = null;
 
 		/**
-		* Toggle.
-		*
-		* @since 1.0.0
-		* @var array
-		* @access protected
-		*/
+		 * Toggle.
+		 *
+		 * @since 1.0.0
+		 * @var array
+		 * @access protected
+		 */
 		protected $toggle = null;
 
 		/**
-		* Vertical tabs.
-		*
-		* @since 1.0.0
-		* @var array
-		* @access protected
-		*/
+		 * Vertical tabs.
+		 *
+		 * @since 1.0.0
+		 * @var array
+		 * @access protected
+		 */
 		protected $tab_vertical = null;
 
 		/**
-		* Horizontal tabs.
-		*
-		* @since 1.0.0
-		* @var array
-		* @access protected
-		*/
+		 * Horizontal tabs.
+		 *
+		 * @since 1.0.0
+		 * @var array
+		 * @access protected
+		 */
 		protected $tab_horizontal = null;
 
 		/**
-		* Accordion settings.
-		*
-		* @since 1.0.0
-		* @var array
-		* @access protected
-		*/
+		 * Accordion settings.
+		 *
+		 * @since 1.0.0
+		 * @var array
+		 * @access protected
+		 */
 		protected $accordion_settings = null;
 
 		/**
-		* Toggle settings.
-		*
-		* @since 1.0.0
-		* @var array
-		* @access protected
-		*/
+		 * Toggle settings.
+		 *
+		 * @since 1.0.0
+		 * @var array
+		 * @access protected
+		 */
 		protected $toggle_settings = null;
 
 		/**
-		* Vertical tabs settings.
-		*
-		* @since 1.0.0
-		* @var array
-		* @access protected
-		*/
+		 * Vertical tabs settings.
+		 *
+		 * @since 1.0.0
+		 * @var array
+		 * @access protected
+		 */
 		protected $tab_vertical_settings = null;
 
 		/**
-		* Horizontal tabs settings.
-		*
-		* @since 1.0.0
-		* @var array
-		* @access protected
-		*/
+		 * Horizontal tabs settings.
+		 *
+		 * @since 1.0.0
+		 * @var array
+		 * @access protected
+		 */
 		protected $tab_horizontal_settings = null;
 
 		/**
-		* Accordion options.
-		*
-		* @since 1.0.0
-		* @var array
-		* @access protected
-		*/
+		 * Accordion options.
+		 *
+		 * @since 1.0.0
+		 * @var array
+		 * @access protected
+		 */
 		protected $accordion_options = null;
 
 		/**
-		* Toggle options.
-		*
-		* @since 1.0.0
-		* @var array
-		* @access protected
-		*/
+		 * Toggle options.
+		 *
+		 * @since 1.0.0
+		 * @var array
+		 * @access protected
+		 */
 		protected $toggle_options = null;
 
 		/**
-		* Vertical tabs options.
-		*
-		* @since 1.0.0
-		* @var array
-		* @access protected
-		*/
+		 * Vertical tabs options.
+		 *
+		 * @since 1.0.0
+		 * @var array
+		 * @access protected
+		 */
 		protected $tab_vertical_options = null;
 
 		/**
-		* Horizontal tab options.
-		*
-		* @since 1.0.0
-		* @var array
-		* @access protected
-		*/
+		 * Horizontal tab options.
+		 *
+		 * @since 1.0.0
+		 * @var array
+		 * @access protected
+		 */
 		protected $tab_horizontal_options = null;
 
 		/**
@@ -597,7 +597,7 @@ if ( ! class_exists( 'Blank_Plugin_Options' ) ) {
 					'description' => esc_html__( 'Component Description', 'blank-plugin' ),
 				),
 			);
-			$this->tab_horizontal= array(
+			$this->tab_horizontal = array(
 				'tab_horizontal' => array(
 					'type'        => 'component-tab-horizontal',
 					'parent'      => 'bi_elements',
@@ -1770,8 +1770,7 @@ if ( ! class_exists( 'Blank_Plugin_Options' ) ) {
 				),
 			);
 
-
-			$this->default_options = array_merge( $this->ui_elements_options, $this->accordion_options, $this->toggle_options, $this->tab_vertical_options, $this->tab_horizontal_options);
+			$this->default_options = array_merge( $this->ui_elements_options, $this->accordion_options, $this->toggle_options, $this->tab_vertical_options, $this->tab_horizontal_options );
 		}
 
 		/**
