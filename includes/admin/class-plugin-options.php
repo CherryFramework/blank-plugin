@@ -270,6 +270,50 @@ if ( ! class_exists( 'Blank_Plugin_Options' ) ) {
 			);
 
 			$this->ui_elements_options = array(
+				'button_normal' => array(
+					'type'        => 'button',
+					'parent'      => 'ui_elements',
+					'title'       => esc_html__( 'Normal Button', 'blank-plugin' ),
+					'description' => esc_html__( 'Description Normal Button.', 'blank-plugin' ),
+					'content'     => esc_html__( 'Normal Button', 'blank-plugin' ),
+					'class'       => '',
+				),
+				'button_success' => array(
+					'type'        => 'button',
+					'parent'      => 'ui_elements',
+					'title'       => esc_html__( 'Success Button', 'blank-plugin' ),
+					'description' => esc_html__( 'Description Success Button.', 'blank-plugin' ),
+					'content'     => esc_html__( 'Success Button', 'blank-plugin' ),
+					'class'       => '',
+					'style'       => 'success',
+				),
+				'button_primary' => array(
+					'type'        => 'button',
+					'parent'      => 'ui_elements',
+					'title'       => esc_html__( 'Primary Button', 'blank-plugin' ),
+					'description' => esc_html__( 'Description Primary.', 'blank-plugin' ),
+					'content'     => esc_html__( 'Primary Button', 'blank-plugin' ),
+					'class'       => '',
+					'style'       => 'primary',
+				),
+				'button_danger' => array(
+					'type'        => 'button',
+					'parent'      => 'ui_elements',
+					'title'       => esc_html__( 'Danger Button', 'blank-plugin' ),
+					'description' => esc_html__( 'Description Danger Button.', 'blank-plugin' ),
+					'content'     => esc_html__( 'Danger Button', 'blank-plugin' ),
+					'class'       => '',
+					'style'       => 'danger',
+				),
+				'button_warning' => array(
+					'type'        => 'button',
+					'parent'      => 'ui_elements',
+					'title'       => esc_html__( 'Warning Button', 'blank-plugin' ),
+					'description' => esc_html__( 'Description Warning Button.', 'blank-plugin' ),
+					'content'     => esc_html__( 'Warning Button', 'blank-plugin' ),
+					'class'       => '',
+					'style'       => 'warning',
+				),
 				'checkbox' => array(
 					'type'        => 'checkbox',
 					'parent'      => 'ui_elements',
