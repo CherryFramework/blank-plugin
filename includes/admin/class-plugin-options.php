@@ -298,6 +298,15 @@ if ( ! class_exists( 'Blank_Plugin_Options' ) ) {
 					'class'       => '',
 					'style'       => 'primary',
 				),
+				'button_secondary' => array(
+					'type'        => 'button',
+					'parent'      => 'ui_elements',
+					'title'       => esc_html__( 'Secondary Button', 'blank-plugin' ),
+					'description' => esc_html__( 'Description Secondary', 'blank-plugin' ),
+					'content'     => esc_html__( 'Secondary Button', 'blank-plugin' ),
+					'class'       => '',
+					'style'       => 'secondary',
+				),
 				'button_danger' => array(
 					'type'        => 'button',
 					'parent'      => 'ui_elements',
